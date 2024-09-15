@@ -12,7 +12,7 @@ import {
 	SimpleChanges,
 	ViewChild,
 } from '@angular/core';
-import { NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { setTheme } from 'ngx-bootstrap/utils';
 
@@ -44,7 +44,7 @@ import { PhoneNumberFormat } from './enums/phone-number-format.enum';
 		},
 	],
 })
-export class NgxIntlTelInputComponent implements OnInit, OnChanges {
+export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValueAccessor {
 	@Input() value: string | undefined = '';
 	@Input() preferredCountries: Array<string> = [];
 	@Input() enablePlaceholder = true;
@@ -212,7 +212,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges {
 
 	public onPhoneNumberChange(): void {
 		let countryCode: string | undefined;
-		// Handle the case where the user sets the value programatically based on a persisted ChangeData obj.
+		// Handle the case where the user sets the value programmatically based on a persisted ChangeData obj.
 		if (this.phoneNumber && typeof this.phoneNumber === 'object') {
 			const numberObj: ChangeData = this.phoneNumber;
 			this.phoneNumber = numberObj.number;
@@ -224,7 +224,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges {
 		// @ts-ignore
     const number = this.getParsedNumber(this.phoneNumber, countryCode);
 
-		// auto select country based on the extension (and areaCode if needed) (e.g select Canada if number starts with +1 416)
+		// auto select country based on the extension (and areaCode if needed) (e.g: select Canada if number starts with +1 416)
 		if (this.enableAutoCountrySelect) {
       countryCode =
 				number && number.getCountryCode()
@@ -318,7 +318,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges {
 	}
 
 	public onInputKeyPress(event: KeyboardEvent): void {
-		const allowedChars = /[0-9\+\-\(\)\ ]/;
+		const allowedChars = /[0-9+\-()]/;
 		const allowedCtrlChars = /[axcv]/; // Allows copy-pasting
 		const allowedOtherKeys = [
 			'ArrowLeft',
@@ -399,16 +399,16 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges {
 	 */
 	private checkSeparateDialCodeStyle() {
 		if (this.separateDialCode && this.selectedCountry) {
-			const cntryCd = this.selectedCountry.dialCode;
+			const countryCode = this.selectedCountry.dialCode;
 			this.separateDialCodeClass =
-				'separate-dial-code iti-sdc-' + (cntryCd.length + 1);
+				'separate-dial-code iti-sdc-' + (countryCode.length + 1);
 		} else {
 			this.separateDialCodeClass = '';
 		}
 	}
 
 	/**
-	 * Cleans dialcode from phone number string.
+	 * Cleans dial-code from phone number string.
 	 * @param phoneNumber string
 	 */
 	private removeDialCode(phoneNumber: string): string {
@@ -418,7 +418,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges {
 			lpn.PhoneNumberFormat[this.numberFormat]
 		);
 		if (phoneNumber.startsWith('+') && this.separateDialCode) {
-			phoneNumber = phoneNumber.substr(phoneNumber.indexOf(' ') + 1);
+			phoneNumber = phoneNumber.slice(phoneNumber.indexOf(' ') + 1);
 		}
 		return phoneNumber;
 	}
@@ -509,7 +509,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges {
 	}
 
 	/**
-	 * Populates preferredCountriesInDropDown with prefferred countries.
+	 * Populates preferredCountriesInDropDown with preferred countries.
 	 */
 	private updatePreferredCountries() {
 		if (this.preferredCountries.length) {

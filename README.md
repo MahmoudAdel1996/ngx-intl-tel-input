@@ -42,7 +42,7 @@ Add _'intl-tel-input'_ style file:
 
 to **angular.json** styles array:
 
-```json
+```json 
 
 "styles": [
   "./node_modules/intl-tel-input/build/css/intlTelInput.css",
