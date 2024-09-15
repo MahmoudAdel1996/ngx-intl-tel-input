@@ -192,7 +192,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
   </tr>
   <tr>
     <td align="center"><a href="https://wagner.pink"><img src="https://avatars.githubusercontent.com/u/5000255?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jlw</b></sub></a><br /><a href="https://github.com/webcat12345/ngx-intl-tel-input/commits?author=jenslw" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/MahmoudAdel1996"><img src="https://avatars.githubusercontent.com/u/35222141?s=400&u=44738f4d07426bb28db5c8da2ef56d39ceed075c&v=4" width="100px;" alt=""/><br /><sub><b>Mahmoud Adel</b></sub></a><br /><a href="https://github.com/MahmoudAdel1996/ngx-intl-tel-input" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/MahmoudAdel1996"><img src="https://avatars.githubusercontent.com/u/35222141?v=4" width="100px;" alt=""/><br /><sub><b>Mahmoud Adel</b></sub></a><br /><a href="https://github.com/MahmoudAdel1996/ngx-intl-tel-input" title="Code">💻</a></td>
   </tr>
 </table>
 

@@ -236,6 +236,15 @@
         "code"
       ]
     }
+    {
+      "login": "MahmoudAdel1996",
+      "name": "Mahmoud Adel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35222141?v=4",
+      "profile": "https://www.linkedin.com/in/mahmoud-adel-full-stack-web-developer",
+      "contributions": [
+        "code"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
   "skipCi": true
