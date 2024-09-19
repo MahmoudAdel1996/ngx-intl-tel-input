@@ -17,7 +17,7 @@
     "npm_pack": "npm run copy-files && cd dist/ngx-intl-tel-input && npm pack",
     "package": "npm run build_lib && npm run npm_pack"
   },
-  "private": false,
+  "private": true,
   "dependencies": {
     "@angular/animations": "8.x - 18.x",
     "@angular/common": "8.x - 18.x",
@@ -30,7 +30,7 @@
     "bootstrap": "^5.3.3",
     "core-js": "^3.38.1",
     "google-libphonenumber": "^3.2.38",
-    "intl-tel-input": "^24.5.0",
+    "intl-tel-input": "^17.0.21",
     "jquery": "^3.7.1",
     "ngx-bootstrap": "^18.0.2",
     "popper.js": "^1.16.1",

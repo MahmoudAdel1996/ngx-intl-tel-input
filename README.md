@@ -22,7 +22,7 @@ Validation with [google-libphonenumber](https://github.com/ruimarinho/google-lib
 
 ### Install Dependencies
 
-`$ npm install intl-tel-input@24.5.0 --save`
+`$ npm install intl-tel-input@17.0.21 --save`
 
 `$ npm install google-libphonenumber --save`
 
@@ -85,17 +85,16 @@ Or this:
 <form #f="ngForm" [formGroup]="phoneForm">
 	<ngx-intl-tel-input
 		[cssClass]="'custom'"
-		[preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
-		[enableAutoCountrySelect]="false"
+		[preferredCountries]="[CountryISO.Egypt, CountryISO.SaudiArabia]"
+		[enableAutoCountrySelect]="true"
 		[enablePlaceholder]="true"
 		[searchCountryFlag]="true"
 		[searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
 		[selectFirstCountry]="false"
-		[selectedCountryISO]="CountryISO.India"
+		[selectedCountryISO]="CountryISO.Egypt"
 		[maxLength]="15"
 		[phoneValidation]="true"
-		[inputId]="my-input-id"
-		name="phone"
+		inputId="phone"
 		formControlName="phone"
 	></ngx-intl-tel-input>
 </form>

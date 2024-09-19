@@ -47,7 +47,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
   @Input() preferredCountries: Array<string> = [];
   @Input() enablePlaceholder = true;
   @Input() customPlaceholder: string;
-  @Input() numberFormat: PhoneNumberFormat = PhoneNumberFormat.INTERNATIONAL;
+  @Input() numberFormat: PhoneNumberFormat = PhoneNumberFormat.E164;
   @Input() cssClass = 'form-control';
   @Input() onlyCountries: Array<string> = [];
   @Input() enableAutoCountrySelect = true;
@@ -385,7 +385,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
     try {
       return this.phoneUtil.format(
         this.phoneUtil.getExampleNumber(countryCode),
-        PhoneNumberFormat[this.numberFormat]
+        this.numberFormat
       );
     } catch (e) {
       // @ts-ignore
@@ -461,7 +461,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
     const number = this.getParsedNumber(phoneNumber, this.selectedCountry.iso2);
     phoneNumber = this.phoneUtil.format(
       number,
-      PhoneNumberFormat[this.numberFormat]
+      this.numberFormat
     );
     if (phoneNumber.startsWith('+') && this.separateDialCode) {
       phoneNumber = phoneNumber.slice(phoneNumber.indexOf(' ') + 1);

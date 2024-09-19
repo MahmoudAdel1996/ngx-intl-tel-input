@@ -15,8 +15,8 @@ export class AppComponent {
   SearchCountryField = SearchCountryField;
   CountryISO = CountryISO;
   preferredCountries: CountryISO[] = [
-    CountryISO.UnitedStates,
-    CountryISO.UnitedKingdom,
+    CountryISO.Egypt,
+    CountryISO.SaudiArabia,
   ];
   phoneForm = new FormGroup({
     phone: new FormControl(undefined, [Validators.required]),
