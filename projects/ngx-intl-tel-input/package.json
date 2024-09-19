@@ -1,6 +1,6 @@
 {
 	"name": "ngx-intl-tel-input-urwave",
-	"version": "18.0.1",
+	"version": "18.0.2",
 	"peerDependencies": {
 		"@angular/common": "8.x - 18.x",
 		"@angular/core": "8.x - 18.x",

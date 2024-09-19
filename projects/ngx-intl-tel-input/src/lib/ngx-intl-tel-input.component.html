@@ -53,7 +53,7 @@
   <input type="tel"
          [id]="inputId"
          autocomplete="off"
-         [class]="cssClass"
+         [ngClass]="cssClass"
          (blur)="onTouched()"
          (keydown)="onInputKeyPress($event)"
          [(ngModel)]="phoneNumber"
