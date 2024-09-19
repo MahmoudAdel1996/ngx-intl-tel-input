@@ -1,13 +1,13 @@
 {
 	"name": "ngx-intl-tel-input-urwave",
-	"version": "4.0.3",
+	"version": "4.0.4",
 	"peerDependencies": {
 		"@angular/common": "8.x - 18.x",
 		"@angular/core": "8.x - 18.x",
 		"@angular/forms": "8.x - 18.x",
 		"google-libphonenumber": "^3.2.38",
 		"intl-tel-input": "^24.5.0",
-		"ngx-bootstrap": ">= 6.0.0"
+		"ngx-bootstrap": ">= 18.0.2"
 	},
 	"repository": {
 		"type": "git",
