@@ -1,6 +1,6 @@
 {
-	"name": "ngx-intl-tel-input",
-	"version": "4.0.0",
+	"name": "ngx-intl-tel-input-urwave",
+	"version": "4.0.3",
 	"peerDependencies": {
 		"@angular/common": "8.x - 18.x",
 		"@angular/core": "8.x - 18.x",
@@ -11,11 +11,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/webcat12345/ngx-intl-tel-input"
+		"url": "git+https://github.com/MahmoudAdel1996/ngx-intl-tel-input"
 	},
 	"author": {
-		"name": "webcat12345",
-		"email": "webcat91@gmail.com"
+		"name": "MahmoudAdel1996",
+		"email": "mahmoooud.adel@gmail.com"
 	},
 	"keywords": [
 		"angular",
@@ -29,6 +29,9 @@
 		"angular 12",
 		"angular 13",
     "angular 14",
+    "angular 15",
+    "angular 16",
+    "angular 17",
     "angular 18",
 		"intl-tel-input",
 		"phone number",
@@ -36,7 +39,7 @@
 	],
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/webcat12345/ngx-intl-tel-input/issues"
+		"url": "https://github.com/MahmoudAdel1996/ngx-intl-tel-input/issues"
 	},
 	"devDependencies": {
 		"@types/google-libphonenumber": "^7.4.30"

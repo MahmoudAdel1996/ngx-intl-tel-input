@@ -1,6 +1,6 @@
 {
-  "name": "ngx-intl-tel-input-app",
-  "version": "0.0.0",
+  "name": "ngx-intl-tel-input-urwave",
+  "version": "18.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +17,7 @@
     "npm_pack": "npm run copy-files && cd dist/ngx-intl-tel-input && npm pack",
     "package": "npm run build_lib && npm run npm_pack"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "8.x - 18.x",
     "@angular/common": "8.x - 18.x",
