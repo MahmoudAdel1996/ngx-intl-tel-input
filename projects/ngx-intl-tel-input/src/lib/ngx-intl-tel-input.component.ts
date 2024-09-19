@@ -319,8 +319,8 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
   }
 
   public onInputKeyPress(event: KeyboardEvent): void {
-    const allowedChars = /[0-9+\-()]/;
-    const allowedCtrlChars = /[axcv]/; // Allows copy-pasting
+    const allowedChars = /[0-9+\-()]/; // Allow numbers, plus, minus, parentheses
+    const allowedCtrlMetaChars = /[axcv]/; // Allow common copy-paste keys: a, x, c, v
     const allowedOtherKeys = [
       'ArrowLeft',
       'ArrowUp',
@@ -333,9 +333,11 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
       'Backspace',
     ];
 
+    const isCtrlMetaPressed = event.ctrlKey || event.metaKey; // Handles Ctrl (Windows/Linux) and Command (Mac)
+
     if (
       !allowedChars.test(event.key) &&
-      !(event.ctrlKey && allowedCtrlChars.test(event.key)) &&
+      !(isCtrlMetaPressed && allowedCtrlMetaChars.test(event.key)) &&
       !allowedOtherKeys.includes(event.key)
     ) {
       event.preventDefault();
