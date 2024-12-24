@@ -1,31 +1,37 @@
 <div class="iti iti--allow-dropdown" [ngClass]="separateDialCodeClass">
-  <div class="iti__flag-container"
-       dropdown
-       [ngClass]="{'disabled': disabled}"
-       [isDisabled]="disabled">
-    <div class="iti__selected-flag dropdown-toggle" dropdownToggle>
+  <div
+    class="iti__flag-container"
+    [ngClass]="{'disabled': disabled}">
+    <div
+      class="iti__selected-flag dropdown-toggle"
+      (click)="toggleDropdown()">
       <div class="iti__flag" [ngClass]="selectedCountry.flagClass || ''"></div>
       @if (separateDialCode) {
-        <div class="selected-dial-code">+{{ selectedCountry.dialCode }}</div>
+        <div class="selected-dial-code">
+          +{{ selectedCountry.dialCode }}
+        </div>
       }
       <div class="iti__arrow"></div>
     </div>
-    <div *dropdownMenu class="dropdown-menu country-dropdown">
+    <div
+      class="dropdown-menu country-dropdown"
+      [class.show]="isDropdownOpen">
       @if (searchCountryFlag && searchCountryField) {
         <div class="search-container">
-          <input id="country-search-box"
-                 [(ngModel)]="countrySearchText"
-                 (keyup)="searchCountry()"
-                 (click)="$event.stopPropagation()"
-                 [placeholder]="searchCountryPlaceholder"
-                 autofocus>
+          <input
+            id="country-search-box"
+            [(ngModel)]="countrySearchText"
+            (keyup)="searchCountry()"
+            (click)="$event.stopPropagation()"
+            [placeholder]="searchCountryPlaceholder"
+            autofocus>
         </div>
       }
-      <ul class="iti__country-list" #countryList>
-        @for (country of preferredCountriesInDropDown; track country) {
-          <li class="iti__country iti__preferred"
-              (click)="onCountrySelect(country, focusable)"
-              [id]="country.htmlId+'-preferred'">
+      <ul class="iti__country-list">
+        @for (country of preferredCountriesInDropDown; track country.dialCode) {
+          <li
+            class="iti__country iti__preferred"
+            (click)="onCountrySelect(country, focusable)">
             <div class="iti__flag-box">
               <div class="iti__flag" [ngClass]="country.flagClass"></div>
             </div>
@@ -36,10 +42,10 @@
         @if (preferredCountriesInDropDown.length) {
           <li class="iti__divider"></li>
         }
-        @for (country of allCountries; track country) {
-          <li class="iti__country iti__standard"
-              (click)="onCountrySelect(country, focusable)"
-              [id]="country.htmlId">
+        @for (country of allCountries; track country.dialCode) {
+          <li
+            class="iti__country iti__standard"
+            (click)="onCountrySelect(country, focusable)">
             <div class="iti__flag-box">
               <div class="iti__flag" [ngClass]="country.flagClass"></div>
             </div>
@@ -50,17 +56,18 @@
       </ul>
     </div>
   </div>
-  <input type="tel"
-         [id]="inputId"
-         autocomplete="off"
-         [ngClass]="cssClass"
-         (blur)="onTouched()"
-         (keydown)="onInputKeyPress($event)"
-         [(ngModel)]="phoneNumber"
-         (ngModelChange)="onPhoneNumberChange()"
-         [disabled]="disabled"
-         [placeholder]="resolvePlaceholder()"
-         [attr.maxLength]="maxLength"
-         [attr.validation]="phoneValidation"
-         #focusable>
+  <input
+    type="tel"
+    [id]="inputId"
+    autocomplete="off"
+    [ngClass]="cssClass"
+    (blur)="onTouched()"
+    (keydown)="onInputKeyPress($event)"
+    [(ngModel)]="phoneNumber"
+    (ngModelChange)="onPhoneNumberChange()"
+    [disabled]="disabled"
+    [placeholder]="resolvePlaceholder()"
+    [attr.maxLength]="maxLength"
+    [attr.validation]="phoneValidation"
+    #focusable>
 </div>

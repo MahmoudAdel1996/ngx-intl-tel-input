@@ -3,6 +3,7 @@ import {
   ElementRef,
   EventEmitter,
   forwardRef,
+  HostListener,
   Input,
   OnChanges,
   OnInit,
@@ -10,9 +11,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR} from '@angular/forms';
-
-import {setTheme} from 'ngx-bootstrap/utils';
+import {ControlValueAccessor, FormsModule, NG_VALIDATORS, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 import {CountryCode} from './data/country-code';
 import {CountryISO} from './enums/country-iso.enum';
@@ -21,9 +20,9 @@ import {Country} from './model/country.model';
 import {phoneNumberValidator} from './ngx-intl-tel-input.validator';
 import {PhoneNumber, PhoneNumberFormat, PhoneNumberUtil} from "google-libphonenumber";
 import {SearchCountryField} from "./enums/search-country-field.enum";
+import {NgClass} from "@angular/common";
 
 @Component({
-  // tslint:disable-next-line: component-selector
   selector: 'ngx-intl-tel-input',
   templateUrl: './ngx-intl-tel-input.component.html',
   styleUrls: ['./bootstrap-dropdown.css', './ngx-intl-tel-input.component.css'],
@@ -41,6 +40,10 @@ import {SearchCountryField} from "./enums/search-country-field.enum";
       multi: true,
     },
   ],
+  imports: [
+    NgClass,
+    FormsModule
+  ]
 })
 export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() value: string | undefined = '';
@@ -61,6 +64,7 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
   @Input() inputId = 'phone';
   @Input() separateDialCode = false;
   separateDialCodeClass: string;
+  isDropdownOpen = false;
 
   @Output() readonly countryChange = new EventEmitter<Country>();
 
@@ -86,10 +90,9 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
 
   @ViewChild('countryList') countryList: ElementRef;
 
-  constructor(private countryCodeData: CountryCode) {
+  constructor(private countryCodeData: CountryCode, private elementRef: ElementRef) {
     // If this is not set, ngx-bootstrap will try to use the bs3 CSS (which is not what we've embedded) and will
     // Add the wrong classes and such
-    setTheme('bs4');
   }
 
   onTouched = () => {
@@ -277,6 +280,17 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
     }
   }
 
+  closeDropdown() {
+    this.isDropdownOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.closeDropdown();
+    }
+  }
+
   public onCountrySelect(country: Country, el: { focus: () => void; }): void {
     this.setSelectedCountry(country);
 
@@ -315,7 +329,12 @@ export class NgxIntlTelInputComponent implements OnInit, OnChanges, ControlValue
       this.propagateChange(null);
     }
 
+    this.closeDropdown();
     el.focus();
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   public onInputKeyPress(event: KeyboardEvent): void {
