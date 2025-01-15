@@ -28,7 +28,7 @@
         </div>
       }
       <ul class="iti__country-list">
-        @for (country of preferredCountriesInDropDown; track country.dialCode) {
+        @for (country of preferredCountriesInDropDown; track $index) {
           <li
             class="iti__country iti__preferred"
             (click)="onCountrySelect(country, focusable)">
@@ -42,7 +42,7 @@
         @if (preferredCountriesInDropDown.length) {
           <li class="iti__divider"></li>
         }
-        @for (country of allCountries; track country.dialCode) {
+        @for (country of allCountries; track $index) {
           <li
             class="iti__country iti__standard"
             (click)="onCountrySelect(country, focusable)">
